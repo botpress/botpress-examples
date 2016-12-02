@@ -45,4 +45,4 @@ jspm_packages
 
 # *** Botpress specifics ***
 data
-+data/rivescript
+!data/rivescript
