@@ -357,7 +357,7 @@ _.keys(TEXT_CATEGORIES).forEach(hearGetVideo)
 
 ### 15. Add default response to all messages
 
-To answer to different messages of users, you need to grab them and in our case, we decided to temporary always answer the same thing. By adding those lines, this send a `botDefaultResponse` to all unanswered messages.
+To answer to different messages of users, you need to grab them and in our case, we decided to temporary always answer the same message. By adding those lines, this create a `botDefaultResponse` to all unanswered messages that we are going to add to `botpress-rivecript`.
 
 ```js
 bp.botDefaultResponse = event => {
@@ -470,25 +470,42 @@ module.exports = function(bp) {
     bp.messenger.sendText(event.user.id, text, pickCategory)
   }
 }
-
 ```
 
 ### 16. Setup rivescript
 
 On web rivescript interface, you can customize any interactions of your bot. If you want to have exact same interactions, you only need to copy these lines in your `begin` and `star` file, but you can write anything you want to.
 
-```js
-
+```
 // begin
+! version = 2.0
 
+! sub i'm     = i am
+! sub i'd     = i would
+! sub i've    = i have
+! sub i'll    = i will
+! sub don't   = do not
+! sub isn't   = is not
+! sub you'd   = you would
+! sub you're  = you are
+! sub you've  = you have
+! sub you'll  = you will
+! sub what's  = what is
+! sub whats   = what is
+! sub what're = what are
+! sub what've = what have
+! sub what'll = what will
+! sub who's   = who is
 
 
 // star
-
-
++ *
+- JS: bp.botDefaultResponse(event)
 ```
 
-**Note**: Any messages that have been taken up by botpress-messenger will be ignore, but rivescript will process any others.
+In `begin`, we only add some classic substitution for future treatment and in `star`, we link our `botDefaultResponse` to any unanswered message.
+
+**Note**: Any messages that have been taken up by botpress-messenger will be ignore and  botpress-rivescript will process any others.
 
 ### 17. Have fun!!!
 
