@@ -1,0 +1,15 @@
+{
+  "name": "motivation-bot",
+  "version": "0.0.1",
+  "description": "Tutorial to show users how to build a chatbot easily.",
+  "main": "index.js",
+  "dependencies": {
+    "botpress": "0.x"
+  },
+  "scripts": {
+    "start": "botpress start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Botpress Team",
+  "license": "AGPL-3.0"
+}
