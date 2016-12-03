@@ -2,7 +2,7 @@
 
 This tutorial will show you how easy it is to build a motivation bot using Botpress and Messenger. For this purpose, we will build a bot from scratch and we will end up with a little motivation bot in about 30 minutes. If you have any problems, do not hesitate to talk to us on our [Public Chatroom](https://gitter.im/botpress/core), it will be a pleasure for us to answer your requests.
 
-If you don't want to follow up our step-by-step guide to build this bot, you can clone this repository and just try it by linking it to a Facebook Page (Step #6). If you clone the repository, don't forget to do `npm install` in your cloned repository.
+If you don't want to follow up our step-by-step guide, you can clone this repository and just try it by linking it to a Facebook Page (Step #6). If you clone the repository, don't forget to run `npm install` in your cloned repository.
 
 ## Requirements
 
@@ -12,7 +12,7 @@ Botpress requires [node](https://nodejs.org) (version >= 4.2) and uses [npm](htt
 
 ### 1. Install
 
-First thing you need to have `botpress` installed as a general dependency using `npm`. If it's done yet, you only need to install it using command line and
+First thing you need to have `botpress` installed as a general dependency using `npm`. If it's done yet, you only need to install it using the following command.
 
 ```
 npm install -g botpress
@@ -30,7 +30,7 @@ md motivation-bot && cd motivation-bot // Windows users
 
 ### 3. Initialization
 
-Let's simply use command line interface to initialize your bot. To do it, you need to enter the following command.
+Now, let's simply use command line interface to initialize your bot. To do it, you need to run the following command.
 
 ```
 botpress init
@@ -38,11 +38,10 @@ botpress init
 
 ### 4. Install modules
 
-Directly in your command line again, you need to install [botpress-messenger](https://github.com/botpress/botpress-messenger) module to connect your bot to a Facebook Page. Also, we will need [botpress-rivescript](https://github.com/botpress/botpress-rivescript) to set add some basic interaction to our bot.
+Directly in your command line again, you need to install [botpress-messenger](https://github.com/botpress/botpress-messenger) module to connect your bot to a Facebook Page. Also, we will need [botpress-rivescript](https://github.com/botpress/botpress-rivescript) to add some basic interaction to our bot.
 
 ```
-botpress install messenger
-botpress install rivescript
+botpress install messenger rivescript
 ```
 
 ### 5. Start
@@ -57,9 +56,9 @@ Go to http://localhost:3000 and from there you can install other modules if you 
 
 ### 6. Configure Messenger connexion settings
 
-Before starting coding it, we need to configure it so it will be linked directly to your Facebook Page. To do this step, you can follow our [5 steps](https://github.com/botpress/botpress-messenger#get-started) guide in botpress-messenger documentation.
+Before starting coding it, we need to configure it then it will be linked directly to your Facebook Page. To do this step, you can follow our [5 steps](https://github.com/botpress/botpress-messenger#get-started) guide in botpress-messenger documentation.
 
-Briefly, you only need to create a [Facebook Page](https://www.facebook.com/pages/create) if you don't already have one and create a new [Messenger Application](https://developers.facebook.com/) on Facebook Developers Interface. After that, you need to find your **App ID**, **App Secret** and **Token Access**, and copy them directly in your web messenger module interface (http://localhost:3000/modules/botpress-messenger). Finally, you only need to activate [ngrok](https://ngrok.com/), validate and connect your bot.
+Briefly, you only need to create a [Facebook Page](https://www.facebook.com/pages/create) if you don't already have one and create a new [Messenger Application](https://developers.facebook.com/) on Facebook Developers Interface. After that, you need to find your **App ID**, **App Secret** and **Token Access**, and copy them directly in your web messenger [module interface](http://localhost:3000/modules/botpress-messenger). Finally, you only need to activate [**ngrok**](https://ngrok.com/), **validate** and **connect** your bot.
 
 If everything works fine from the begin of the tutorial, your bot is supposed to work and answer to `BOT_LICENSE` if you chat with it directly on [Messenger](https://www.messenger.com/) or [Facebook](https://www.facebook.com).
 
@@ -67,7 +66,7 @@ If everything works fine from the begin of the tutorial, your bot is supposed to
 
 ### 7. Open in editor
 
-Once all the setup is done, we are now ready to code your bot. First thing you need to do is to open it with your favorite editor (Sublime, Atom, WebStorm, Netbeans...). As you can see, some files and directories have already been created when you initialize it before to acceralerate development.
+Once all the setup is done, we are now ready to code your bot. First thing you need to do is to open your repository with your favorite editor (Sublime, Atom, WebStorm, Netbeans...). As you can see, some files and directories have already been created when you initialize it before to accelerate development.
 
 ```js
 - botfile.js // your bot's configuration. botpress uses this
@@ -102,7 +101,7 @@ module.exports = function(bp) {
 
 ### 9. Basic welcome message
 
-First, we will setup a basic answer to `GET_STARTED` button on Messenger. You simply need to add those lines of `index.js` under your TODO list.
+First, we will setup a basic answer to `GET_STARTED` button on Messenger. You simply need to add those lines in `index.js`.
 
 ```js
 bp.hear({
@@ -123,6 +122,7 @@ To achieve easily all what we want to do, we will need some useful `npm packages
 ```js
 npm install bluebird  // https://bluebirdjs.com
 npm install lodash    // https://lodash.com
+npm install axios     // https://www.npmjs.com/package/axios
 ```
 
 Once it's done, at the begin of your `index.js` file, you will need to import all of them.
@@ -134,7 +134,7 @@ const _ = require('lodash')
 
 ### 11. Choose between 3 categories
 
-As you probably notice our first welcome message was a bit boring, let's customize it and add humour to it.
+As you probably notice our first welcome message was a bit boring, let's customize it and add some humour to it.
 
 ```js
 bp.hear({
@@ -182,9 +182,9 @@ bp.hear({
 })
 ```
 
-In this code, we use `Promise.mapSeries` to send ordered text messages with some delay between each. Then we finally send a message with some `quick_replies` added to ask to users which type of video they want to listen at.
+In this code, we use `Promise.mapSeries` to send ordered text messages with some delay between each. Also, we send a message at he end with some `quick_replies` added to ask to users which type of video they want to watch.
 
-**Note**: You can try it if you want to, it's supposed to be working. The only thing you have to do is to restart your bot by using again `bp start` in your terminal. Don't forget to save your changes before...
+**Note**: You can try it if you want to, it's supposed to be working. The only thing you have to do before is to restart your bot by using again `bp start` in your terminal. Don't forget to save your changes before...
 
 ### 12. Basic answer
 
@@ -209,6 +209,207 @@ bp.hear({
 ### 13.
 
 
+```js
+const axios = require('axios')
+const _ = require('lodash')
+
+const videos = {
+  WORK: [
+    "DNFtCIzJQ7A",
+    "g-fGYtagSDY",
+    "00rPgc0tISM",
+    "qa9G5EdKiRw",
+    "3AyH1fBN7ac",
+    "HQtZ4kud2qA",
+    "puDQoBPpWyQ",
+    "A0Scr2TW2ZA",
+    "oonaeUiKV8Y",
+    "2zzj4CO9xSw",
+    "twZgNP8iZBQ",
+    "8QlvQC4MXxs"
+  ],
+  LIFE: [
+    "jE-Ajfd51aM",
+    "6vuetQSwFW8",
+    "7_R4AsV2fPI",
+    "njQcOKOpFwk",
+    "5g0QHTcwP8k",
+    "t-H7_aAuiC8",
+    "5e338_RFOr8",
+    "U3V701IUZ2E",
+    "ZkabeHig_r4",
+    "FK16iXPRAjI",
+    "4pxiU89O1wE",
+    "2otRxX6y7mQ"
+  ],
+  GYM: [
+    "Fh-rCrREEgA",
+    "xoXYe9e01_Y",
+    "hV63DbQ_qSc",
+    "YxzQ6umhH4Q",
+    "lsSC2vx7zFQ",
+    "63Cv6Jiiink",
+    "aMGoxlXmA0o",
+    "at7QvbFy9fM",
+    "qapsrR8zIJM",
+    "vnMtpNhcDOE",
+    "OV6-n5wtCWA",
+    "lpVRxa9jsrE",
+    "WDJaJbc9O-4"
+  ]
+}
+
+const getYoutubeVideoMetadata = (videoId) => {
+  const YOUTUBE_API_KEY = 'AIzaSyAp2kmHzUFdlD1b4N4XR0OhKUWnC_IVaAA'
+  const apiUrl = `https://content.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=${YOUTUBE_API_KEY}`
+
+  return axios.get(apiUrl)
+  .then(res => {
+    const video = res.data.items[0].snippet
+    return {
+      description: video.description,
+      thumbnail: (video.thumbnails.high || video.thumbnails.standard).url,
+      title: video.title,
+      url: 'https://www.youtube.com/watch?v=' + videoId
+    }
+  })
+}
+
+module.exports = {
+  getRandomVideo: (category) => {
+    const videoId = _.sample(videos[category])
+    return getYoutubeVideoMetadata(videoId)
+  }
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```js
+const Promise = require('bluebird')
+const _ = require('lodash')
+const videos = require('./videos')
+
+const TEXT_CATEGORIES = {
+  WORK: [
+    "Oh, yeah, work isn't always easy man. Let's fix that right away.",
+    "Listen to that, I bet you'll get a raise next week 💪"
+  ],
+  LIFE: [
+    "Take charge of your life NOW"
+  ],
+  GYM: [
+    "Want muscles?"
+  ]
+}
+
+const pickCategory = {
+  quick_replies: [
+    {
+      content_type: 'text',
+      title: '🔥 Work 🔥',
+      payload: 'GET_VIDEO_WORK'
+    },
+    {
+      content_type: 'text',
+      title: '😌 Life Goals 🔥',
+      payload: 'GET_VIDEO_LIFE'
+    },
+    {
+      content_type: 'text',
+      title: '💪 Gym 🔥',
+      payload: 'GET_VIDEO_GYM'
+    }
+  ],
+  typing: true
+}
+
+module.exports = function(bp) {
+  bp.middlewares.load()
+
+  /* Things to do:
+    [X] Welcome message with quick replies
+    [X] Choose between 3 categories: WORK, PERSONAL DEVELOPMENT, GYM
+    [X] Choose random video in selected category
+    [X] Send video as Card (image, thumbnail, share button)
+    [ ] Add small talk capabilities
+    [ ] Catch-all sentences with quick_replies
+    [X] Add video shortcuts in bot's menu
+    [ ] Prevent people from getting more than 2 videos a day
+  */
+
+  bp.hear({
+    type: 'postback',
+    text: 'GET_STARTED'
+  }, (event, next) => {
+    const { first_name, last_name } = event.user
+    bp.logger.info('New user:', first_name, last_name)
+
+    const WELCOME_SENTENCES = [
+      "Hey there buddy pal, so I've heard that you need a little kick in the butt from time to time?",
+      "Don't worry mate, that's my job and I'll do that for you.",
+      "But man, I don't talk much.",
+      "I'm a bit dumb, to be honest. Let's just stick to using buttons, that's going to be easier for the both of us."
+    ]
+
+    const WELCOME_TEXT_QUICK_REPLY = "THAT BEING SAID, choose a category right away and I'll make sure you get pumped up!"
+
+    Promise.mapSeries(WELCOME_SENTENCES, txt => {
+      bp.messenger.sendText(event.user.id, txt, { typing: true })
+      return Promise.delay(4000)
+    })
+    .then(() => {
+      bp.messenger.sendText(event.user.id, WELCOME_TEXT_QUICK_REPLY, pickCategory)
+    })
+  })
+
+  const hearGetVideo = category => {
+    bp.hear({ text: 'GET_VIDEO_' + category }, (event, next) => {
+      console.log('!! I CAUGHT THAT')
+      const text = _.sample(TEXT_CATEGORIES[category])
+      bp.messenger.sendText(event.user.id, text, { typing: true })
+
+      Promise.delay(1500)
+      .then(() => videos.getRandomVideo(category))
+      .then(meta => {
+        bp.messenger.sendTemplate(event.user.id, {
+          template_type: 'generic',
+          elements: [{
+            title: meta.title,
+            item_url: meta.url,
+            image_url: meta.thumbnail,
+            subtitle: meta.description,
+            buttons: [
+              { type: 'web_url', title: '🔥 Watch 🔥', url: meta.url },
+              { type: 'element_share' }
+            ]
+          }]
+        })
+      })
+    })
+  }
+
+  // Create a listener for each categories
+  _.keys(TEXT_CATEGORIES).forEach(hearGetVideo)
+
+  bp.botDefaultResponse = event => {
+    const text = event.user.first_name + ", I told you, I'm a bit dumb. I assume you want motivation, cause that's all I'm able to do :)"
+    bp.messenger.sendText(event.user.id, text, pickCategory)
+  }
+}
+
+```
 
 ### 14.
 
@@ -217,13 +418,23 @@ bp.hear({
 
 ### 16. Setup rivescript
 
-On web rivescript interface, you can customize any interactions of your bot.
+On web rivescript interface, you can customize any interactions of your bot. If you want to have exact same interactions, you only need to copy these lines in your `begin` and `star` file, but you can write anything you want to.
 
-**Note**: Any messages that have been taken up by botpress-messenger will be ignore, but rivescript will proceed any others.
+```js
+
+// begin
+
+
+// star
+
+
+```
+
+**Note**: Any messages that have been taken up by botpress-messenger will be ignore, but rivescript will process any others.
 
 ### 17. Have fun!!!
 
-Building a bot with Botpress is simple as that! Just notice, it takes us exactly 3 hours and everything was done (code and tutorial)...
+Building a bot with Botpress is simple as that! Just notice, it takes us only a few hours and everything was done (code and tutorial)...
 
 Feel free to fork our bot, send pull requests, clone it, send any comments...
 
