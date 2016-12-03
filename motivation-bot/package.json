@@ -4,7 +4,12 @@
   "description": "Tutorial to show users how to build a chatbot easily.",
   "main": "index.js",
   "dependencies": {
-    "botpress": "0.x"
+    "axios": "^0.15.3",
+    "bluebird": "^3.4.6",
+    "botpress": "0.x",
+    "botpress-messenger": "^1.0.8",
+    "botpress-rivescript": "^1.0.10",
+    "lodash": "^4.17.2"
   },
   "scripts": {
     "start": "botpress start",
