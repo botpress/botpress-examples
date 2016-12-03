@@ -38,10 +38,11 @@ botpress init
 
 ### 4. Install modules
 
-Directly in your command line again, you need to install [botpress-messenger](https://github.com/botpress/botpress-messenger) module to connect your bot to a Facebook Page.
+Directly in your command line again, you need to install [botpress-messenger](https://github.com/botpress/botpress-messenger) module to connect your bot to a Facebook Page. Also, we will need [botpress-rivescript](https://github.com/botpress/botpress-rivescript) to set add some basic interaction to our bot.
 
 ```
 botpress install messenger
+botpress install rivescript
 ```
 
 ### 5. Start
@@ -69,11 +70,11 @@ If everything works fine from the begin of the tutorial, your bot is supposed to
 Once all the setup is done, we are now ready to code your bot. First thing you need to do is to open it with your favorite editor (Sublime, Atom, WebStorm, Netbeans...). As you can see, some files and directories have already been created when you initialize it before to acceralerate development.
 
 ```js
-  - botfile.js // your bot's configuration. botpress uses this
-  - index.js // your bot's entry point. bot logic goes here
-  - package.json // regular node package.json file
-  - LICENSE // your bot license, either AGPLv3 or Botpress License
-  - .gitignore // ignoring some botpress-created files by default
+- botfile.js // your bot's configuration. botpress uses this
+- index.js // your bot's entry point. bot logic goes here
+- package.json // regular node package.json file
+- LICENSE // your bot license, either AGPLv3 or Botpress License
+- .gitignore // ignoring some botpress-created files by default
 ```
 
 ### 8. Start coding
@@ -203,10 +204,28 @@ bp.hear({
 })
 ```
 
-**Note**: Actually, we only send a text message to validate that everything is working, but dont't worry, during next steps, we will customize it to send awesome random videos about each topic.
+**Note**: Actually, we only send a text message to validate that everything is working, but don't worry, during next steps, we will customize it to send awesome random videos about each topic.
 
 ### 13.
 
+
+
+### 14.
+
+
+### 15.
+
+### 16. Setup rivescript
+
+On web rivescript interface, you can customize any interactions of your bot.
+
+**Note**: Any messages that have been taken up by botpress-messenger will be ignore, but rivescript will proceed any others.
+
+### 17. Have fun!!!
+
+Building a bot with Botpress is simple as that! Just notice, it takes us exactly 3 hours and everything was done (code and tutorial)...
+
+Feel free to fork our bot, send pull requests, clone it, send any comments...
 
 ## Community
 
