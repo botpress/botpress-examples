@@ -1,6 +1,6 @@
 # Tutorial
 
-This tutorial will show you how easy it is to build a motivation bot using Botpress and Messenger. For this purpose, we will build a bot from scratch and we will end up with a little motivation bot in about 30 minutes. If you have any problems, do not hesitate to talk to us on our [Public Chatroom](https://gitter.im/botpress/core), it will be a pleasure for us to answer your requests.
+This tutorial will show you how easy it is to build a motivation bot using Botpress and Messenger. For this purpose, we will build a bot from scratch and we will end up with a little motivation bot in about 30 minutes. If you have any problem, do not hesitate to talk to us on our [Public Chatroom](https://gitter.im/botpress/core), it will be a pleasure for us to answer your requests.
 
 If you don't want to follow up our step-by-step guide, you can clone this repository and just try it by linking it to a Facebook Page (Step #6). If you clone the repository, don't forget to run `npm install` in your cloned repository.
 
@@ -355,9 +355,9 @@ module.exports = function(bp) {
 _.keys(TEXT_CATEGORIES).forEach(hearGetVideo)
 ```
 
-### 15. Add default response to all messages
+### 15. Add default response
 
-To answer to different messages of users, you need to grab them and in our case, we decided to temporary always answer the same message. By adding those lines, this create a `botDefaultResponse` to all unanswered messages that we are going to add to `botpress-rivecript`.
+To answer text messages from users, you need to grab them and in our case, we decided to temporary always answer the same message. By adding those lines, this create a `botDefaultResponse` that you can call anywhere.
 
 ```js
 bp.botDefaultResponse = event => {
@@ -368,7 +368,7 @@ bp.botDefaultResponse = event => {
 
 ### 16. Join all code together
 
-Finally, you only need to put all your code together and restart your bot by running `botpress start` again.
+Finally, you only need to put all your code together and restart your bot by running `botpress start`.
 
 ```js
 const Promise = require('bluebird')
@@ -474,7 +474,7 @@ module.exports = function(bp) {
 
 ### 16. Setup rivescript
 
-On web rivescript interface, you can customize any interactions of your bot. If you want to have exact same interactions, you only need to copy these lines in your `begin` and `star` file, but you can write anything you want to.
+On web rivescript interface, you can customize any interaction of your bot. If you want to have exact same interactions, you only need to copy these lines in your `begin` and `star` file, but you can write anything you want to.
 
 ```
 // begin
@@ -503,15 +503,15 @@ On web rivescript interface, you can customize any interactions of your bot. If 
 - JS: bp.botDefaultResponse(event)
 ```
 
-In `begin`, we only add some classic substitution for future treatment and in `star`, we link our `botDefaultResponse` to any unanswered message.
+In `begin`, we only add some classic substitution and in `star`, we link our `botDefaultResponse` to any unanswered message.
 
-**Note**: Any messages that have been taken up by botpress-messenger will be ignore and  botpress-rivescript will process any others.
+**Note**: Any message that have been taken up by botpress-messenger will be swallow and botpress-rivescript will process any other.
 
 ### 17. Have fun!!!
 
 Building a bot with Botpress is simple as that! Just notice, it takes us only a few hours and everything was done (code and tutorial)...
 
-Feel free to fork our bot, send pull requests, clone it, send any comments...
+Feel free to fork our bot, send pull requests, clone it, send any comment...
 
 ## Community
 
