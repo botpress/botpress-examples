@@ -58,7 +58,7 @@ Go to http://localhost:3000 and from there you can install other modules if you 
 
 Before starting coding it, we need to configure it then it will be linked directly to your Facebook Page. To do this step, you can follow our [5 steps](https://github.com/botpress/botpress-messenger#get-started) guide in botpress-messenger documentation.
 
-<img src='./assets/connexion-settings.png' height=300px /> 
+<img src='./assets/connexion-settings.png' height=300px />
 
 Briefly, you only need to create a [Facebook Page](https://www.facebook.com/pages/create) if you don't already have one and create a new [Messenger Application](https://developers.facebook.com/) on Facebook Developers Interface. After that, you need to find your **App ID**, **App Secret** and **Token Access**, and copy them directly in your web messenger [module interface](http://localhost:3000/modules/botpress-messenger). Finally, you only need to activate [**ngrok**](https://ngrok.com/), **validate** and **connect** your bot.
 
@@ -504,7 +504,7 @@ In `begin`, we only add some classic substitution and in `star`, we link our `bo
 
 **Note**: Any message that have been taken up by botpress-messenger will be swallow and botpress-rivescript will process any other.
 
-### 17. Have fun!!!
+## Have fun
 
 Building a bot with Botpress is simple as that! Just notice, it takes us only a few hours and everything was done (code and tutorial)...
 
