@@ -91,8 +91,6 @@ module.exports = function(bp) {
     [ ] Send video as Card (image, thumbnail, share button)
     [ ] Add small talk capabilities
     [ ] Catch-all sentences with quick_replies
-    [ ] Add video shortcuts in bot's menu
-    [ ] Prevent people from getting more than 2 videos a day
   */
 }
 ```
@@ -296,10 +294,7 @@ module.exports = {
 
 As you can see, `video.js` only exports a function `getRandomVideo` which return video metadata (description, thumbnail, title, url) grabbed from YouTube.
 
-
 ### 14. Listening on different categories
-
-
 
 ```js
 // ... (other imports)
