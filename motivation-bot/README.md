@@ -137,49 +137,56 @@ const _ = require('lodash')
 As you probably notice our first welcome message was a bit boring, let's customize it and add some humour to it.
 
 ```js
-bp.hear({
-  type: 'postback',
-  text: 'GET_STARTED'
-}, (event, next) => {
-  const { first_name, last_name } = event.user
-  bp.logger.info('New user:', first_name, last_name)
+// ... (imports)
 
-  const WELCOME_SENTENCES = [
-    "Hey there buddy pal, so I've heard that you need a little kick in the butt from time to time?",
-    "Don't worry mate, that's my job and I'll do that for you.",
-    "But man, I don't talk much.",
-    "I'm a bit dumb, to be honest. Let's just stick to using buttons, that's going to be easier for the both of us."
-  ]
+const pickCategory = {
+  quick_replies: [
+    {
+      content_type: 'text',
+      title: '🔥 Work 🔥',
+      payload: 'GET_VIDEO_WORK'
+    },
+    {
+      content_type: 'text',
+      title: '😌 Life Goals 🔥',
+      payload: 'GET_VIDEO_LIFE'
+    },
+    {
+      content_type: 'text',
+      title: '💪 Gym 🔥',
+      payload: 'GET_VIDEO_GYM'
+    }
+  ],
+  typing: true
+}
 
-  const WELCOME_TEXT_QUICK_REPLY = "THAT BEING SAID, choose a category right away and I'll make sure you get pumped up!"
+module.exports = function(bp) {
 
-  Promise.mapSeries(WELCOME_SENTENCES, txt => {
-    bp.messenger.sendText(event.user.id, txt, { typing: true })
-    return Promise.delay(4000)
-  })
-  .then(() => {
-    bp.messenger.sendText(event.user.id, WELCOME_TEXT_QUICK_REPLY, {
-      quick_replies: [
-        {
-          content_type: 'text',
-          title: '🔥 Work 🔥',
-          payload: 'GET_VIDEO_WORK'
-        },
-        {
-          content_type: 'text',
-          title: '😌 Life Goals 🔥',
-          payload: 'GET_VIDEO_LIFE'
-        },
-        {
-          content_type: 'text',
-          title: '💪 Gym 🔥',
-          payload: 'GET_VIDEO_GYM'
-        }
-      ],
-      typing: true
+  bp.hear({
+    type: 'postback',
+    text: 'GET_STARTED'
+  }, (event, next) => {
+    const { first_name, last_name } = event.user
+    bp.logger.info('New user:', first_name, last_name)
+
+    const WELCOME_SENTENCES = [
+      "Hey there buddy pal, so I've heard that you need a little kick in the butt from time to time?",
+      "Don't worry mate, that's my job and I'll do that for you.",
+      "But man, I don't talk much.",
+      "I'm a bit dumb, to be honest. Let's just stick to using buttons, that's going to be easier for the both of us."
+    ]
+
+    const WELCOME_TEXT_QUICK_REPLY = "THAT BEING SAID, choose a category right away and I'll make sure you get pumped up!"
+
+    Promise.mapSeries(WELCOME_SENTENCES, txt => {
+      bp.messenger.sendText(event.user.id, txt, { typing: true })
+      return Promise.delay(4000)
+    })
+    .then(() => {
+      bp.messenger.sendText(event.user.id, WELCOME_TEXT_QUICK_REPLY, pickCategory)
     })
   })
-})
+}
 ```
 
 In this code, we use `Promise.mapSeries` to send ordered text messages with some delay between each. Also, we send a message at he end with some `quick_replies` added to ask to users which type of video they want to watch.
@@ -206,8 +213,11 @@ bp.hear({
 
 **Note**: Actually, we only send a text message to validate that everything is working, but don't worry, during next steps, we will customize it to send awesome random videos about each topic.
 
-### 13.
+### 13. Create a video file
 
+To access videos from YouTube, you need to create a new file `video.js` and type (or copy) the following code. In fact, you need to import `axios` and `lodash`, create your own `videos` object which is a simple map containing multiple link selected for different categories and implement `getYoutubeVideoMetadata` function to grab metadata from YouTube API.
+
+**Important**: You absolutely need to enter your own `<YOUTUBE_API_KEY>` if you want to grab video from YouTube. To do it, you can follow this detailed [guide](https://developers.google.com/youtube/v3/getting-started).
 
 ```js
 const axios = require('axios')
@@ -260,7 +270,7 @@ const videos = {
 }
 
 const getYoutubeVideoMetadata = (videoId) => {
-  const YOUTUBE_API_KEY = 'AIzaSyAp2kmHzUFdlD1b4N4XR0OhKUWnC_IVaAA'
+  const YOUTUBE_API_KEY = <YOUR_YOUTUBE_API_KEY>
   const apiUrl = `https://content.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=${YOUTUBE_API_KEY}`
 
   return axios.get(apiUrl)
@@ -284,17 +294,81 @@ module.exports = {
 
 ```
 
+As you can see, `video.js` only exports a function `getRandomVideo` which return video metadata (description, thumbnail, title, url) grabbed from YouTube.
+
+
+### 14. Listening on different categories
 
 
 
+```js
+// ... (other imports)
+const videos = require('./videos')
 
+// ... (other variables)
 
+const TEXT_CATEGORIES = {
+  WORK: [
+    "Oh, yeah, work isn't always easy man. Let's fix that right away.",
+    "Listen to that, I bet you'll get a raise next week 💪"
+  ],
+  LIFE: [
+    "Take charge of your life NOW"
+  ],
+  GYM: [
+    "Want muscles?"
+  ]
+}
 
+module.exports = function(bp) {
 
+  // ... (other functions)
 
+  const hearGetVideo = category => {
+    bp.hear({ text: 'GET_VIDEO_' + category }, (event, next) => {
+      console.log('!! I CAUGHT THAT')
+      const text = _.sample(TEXT_CATEGORIES[category])
+      bp.messenger.sendText(event.user.id, text, { typing: true })
 
+      Promise.delay(1500)
+      .then(() => videos.getRandomVideo(category))
+      .then(meta => {
+        bp.messenger.sendTemplate(event.user.id, {
+          template_type: 'generic',
+          elements: [{
+            title: meta.title,
+            item_url: meta.url,
+            image_url: meta.thumbnail,
+            subtitle: meta.description,
+            buttons: [
+              { type: 'web_url', title: '🔥 Watch 🔥', url: meta.url },
+              { type: 'element_share' }
+            ]
+          }]
+        })
+      })
+    })
+  }
+}
 
+// Create a listener for each categories
+_.keys(TEXT_CATEGORIES).forEach(hearGetVideo)
+```
 
+### 15. Add default response to all messages
+
+To answer to different messages of users, you need to grab them and in our case, we decided to temporary always answer the same thing. By adding those lines, this send a `botDefaultResponse` to all unanswered messages.
+
+```js
+bp.botDefaultResponse = event => {
+  const text = event.user.first_name + ", I told you, I'm a bit dumb. I assume you want motivation, cause that's all I'm able to do :)"
+  bp.messenger.sendText(event.user.id, text, pickCategory)
+}
+```
+
+### 16. Join all code together
+
+Finally, you only need to put all your code together and restart your bot by running `botpress start` again.
 
 ```js
 const Promise = require('bluebird')
@@ -337,17 +411,6 @@ const pickCategory = {
 
 module.exports = function(bp) {
   bp.middlewares.load()
-
-  /* Things to do:
-    [X] Welcome message with quick replies
-    [X] Choose between 3 categories: WORK, PERSONAL DEVELOPMENT, GYM
-    [X] Choose random video in selected category
-    [X] Send video as Card (image, thumbnail, share button)
-    [ ] Add small talk capabilities
-    [ ] Catch-all sentences with quick_replies
-    [X] Add video shortcuts in bot's menu
-    [ ] Prevent people from getting more than 2 videos a day
-  */
 
   bp.hear({
     type: 'postback',
@@ -400,7 +463,6 @@ module.exports = function(bp) {
     })
   }
 
-  // Create a listener for each categories
   _.keys(TEXT_CATEGORIES).forEach(hearGetVideo)
 
   bp.botDefaultResponse = event => {
@@ -411,11 +473,6 @@ module.exports = function(bp) {
 
 ```
 
-### 14.
-
-
-### 15.
-
 ### 16. Setup rivescript
 
 On web rivescript interface, you can customize any interactions of your bot. If you want to have exact same interactions, you only need to copy these lines in your `begin` and `star` file, but you can write anything you want to.
@@ -423,6 +480,7 @@ On web rivescript interface, you can customize any interactions of your bot. If 
 ```js
 
 // begin
+
 
 
 // star
