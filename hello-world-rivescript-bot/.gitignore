@@ -44,5 +44,5 @@ jspm_packages
 *.tgz
 
 # *** Botpress specifics ***
-data
-!data/rivescript
+data/*
+!data/rivescript/
