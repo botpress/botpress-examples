@@ -54,7 +54,7 @@ Go to **http://localhost:3000** and from there you can install other modules if 
 
 ### 6. Configure Messenger connexion settings
 
-Before starting coding it, we need to configure it then it will be linked directly to your Facebook Page. To do this step, you can follow our [5 steps](https://github.com/botpress/botpress-messenger#get-started) guide in botpress-messenger documentation.
+First, you will need to configure your connexion settings then it will be linked directly to your Facebook Page. To do this step, you can follow our [5 steps](https://github.com/botpress/botpress-messenger#get-started) guide in botpress-messenger documentation.
 
 <img src='./assets/connexion-settings.png' height=300px />
 
@@ -62,7 +62,7 @@ Briefly, you only need to create a [Facebook Page](https://www.facebook.com/page
 
 ### 7. Answering to hello world
 
-First, you will need to add a basic answer to 'hello world' on [web interface](http://localhost:3000/modules/botpress-rivescript) of rivescript module. To do it, you simply need to modify your `begin` file by adding those lines.
+Now, you will need to add a basic answer to 'hello world' on [web interface](http://localhost:3000/modules/botpress-rivescript) of rivescript module. To do it, you simply need to modify your `begin` file by adding those lines.
 
 ```
 ! version = 2.0
