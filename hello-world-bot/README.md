@@ -21,9 +21,9 @@ npm install -g botpress
 Once `botpress` has been installed, in your command line tool, you need to create a new repository and move into it.
 
 ```js
-mkdir motivation-bot && cd motivation-bot // Mac and Linux users
+mkdir hello-world-bot && cd hello-world-bot // Mac and Linux users
 
-md motivation-bot && cd motivation-bot // Windows users
+md hello-world-bot && cd hello-world-bot // Windows users
 ```
 
 ### 3. Initialization
@@ -59,10 +59,6 @@ Before starting coding it, we need to configure it then it will be linked direct
 <img src='./assets/connexion-settings.png' height=300px />
 
 Briefly, you only need to create a [Facebook Page](https://www.facebook.com/pages/create) if you don't already have one and create a new [Messenger Application](https://developers.facebook.com/) on Facebook Developers Interface. After that, you need to find your **App ID**, **App Secret** and **Token Access**, and copy them directly in your web messenger [module interface](http://localhost:3000/modules/botpress-messenger). Finally, you only need to activate [**ngrok**](https://ngrok.com/), **validate** and **connect** your bot.
-
-If everything works fine from the begin of the tutorial, your bot is supposed to work and answer to `BOT_LICENSE` if you chat with it directly on [Messenger](https://www.messenger.com/) or [Facebook](https://www.facebook.com).
-
-**Note**: `BOT_LICENSE` is a built-in command to print basic information about your bot (name, version, licenses).
 
 ### 7. Open in editor
 
