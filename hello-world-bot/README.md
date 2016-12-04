@@ -28,7 +28,7 @@ md motivation-bot && cd motivation-bot // Windows users
 
 ### 3. Initialization
 
-Now, let's simply use command line interface to initialize your bot. To do it, you need to run the following command.
+Now, let's simply use command line interface of `botpress` to initialize your bot. To do it, you need to run the following command.
 
 ```
 botpress init
@@ -36,7 +36,7 @@ botpress init
 
 ### 4. Install modules
 
-Directly in your command line again, you need to install [botpress-messenger](https://github.com/botpress/botpress-messenger) module to connect your bot to a Facebook Page.
+In your command line again, you need to install [botpress-messenger](https://github.com/botpress/botpress-messenger) module to be able to connect your bot to your Facebook Page.
 
 ```
 botpress install messenger
@@ -44,13 +44,13 @@ botpress install messenger
 
 ### 5. Start
 
-Once you have everything installed, you can start your bot and see what have been installed on it.
+Once you have everything is installed, you can start your bot and see what have been installed on it.
 
 ```
 botpress start
 ```
 
-Go to http://localhost:3000 and from there you can install other modules if you want to, but for this tutorial we only need `botpress-messenger` which is supposed to be already installed.
+Go to **http://localhost:3000** and from there you can install other modules if you want to, but for this tutorial we only need `botpress-messenger` which is supposed to be already installed.
 
 ### 6. Configure Messenger connexion settings
 
@@ -117,7 +117,7 @@ module.exports = function(bp) {
 }
 ```
 
-Here, we use `hear` which is a built-in function of `bp` to listen on specific `event` conditions. In this case, as you can see it, we are listening on `platform: 'facebook'`, `type: 'message'`, and `text: 'hello world'` then when those conditions are respected, `callback` function send a custom answer to this specific `user`.
+Here, we use `hear` which is a built-in function of `bp` to listen on specific `event` conditions. In this case, as you can see it, we are listening on `platform: 'facebook'`, `type: 'message'`, and `text: 'hello world'` then when those conditions are respected, `callback` function is called and it send a custom answer to this specific `user`.
 
 **Note**: You can restart your bot in command line by running `botpress start` and your bot will now answer to 'hello world' when you talk to him directly on Messenger.
 
@@ -141,11 +141,11 @@ module.exports = funstion(bp) {
 }
 ```
 
-As you can see, `hear` support regex expression and in our case, it's exactly what we want to. If you don't have any experience using regex, just notice that `text: /.+/i` will be respected for any entry.
+As you can see, `hear` support regex expression and in our case, it's exactly what we want to. If you don't have any experience using regex, just notice that `text: /.+/i` will be respected for any text entry.
 
 ## Have fun
 
-Building a bot with Botpress is simple as that! Just notice, it takes us only a few hours and everything was done (code and tutorial)...
+Building a bot with Botpress is simple as that!
 
 Feel free to fork our bot, send pull requests, clone it, send any comment...
 
@@ -157,4 +157,4 @@ We have a [Public Chatroom](https://gitter.im/botpress/core), everybody is invit
 
 ## License
 
-motivation-bot is licensed under [AGPL-3.0](/LICENSE)
+hello-world-bot is licensed under [AGPL-3.0](/LICENSE)
