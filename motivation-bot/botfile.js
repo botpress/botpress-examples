@@ -23,7 +23,7 @@ module.exports = {
   login: {
     enabled: process.env.NODE_ENV === 'production',
     tokenExpiry: "6 hours",
-    password: "password",
+    password: process.env.BOTPRESS_PASSWORD || "password",
     maxAttempts: 3,
     resetAfter: 5 * 60 * 10000 // 5 minutes
   }
