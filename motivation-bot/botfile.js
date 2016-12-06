@@ -4,9 +4,9 @@ module.exports = {
    * where the content is stored
    * you can access this property from `bp.dataLocation`
    */
-  dataDir: "./data",
+  dataDir: process.env.BOTPRESS_DATA_DIR || "./data",
 
-  modulesConfigDir: "./modules_config",
+  modulesConfigDir: process.env.BOTPRESS_CONFIG_DIR || "./modules_config",
   disableFileLogs: false,
   notification: {
     file: 'notifications.json',

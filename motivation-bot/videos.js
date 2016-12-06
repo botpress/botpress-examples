@@ -54,7 +54,7 @@ const getYoutubeVideoMetadata = (videoId) => {
       description: video.description,
       thumbnail: (video.thumbnails.high || video.thumbnails.standard).url,
       title: video.title,
-      url: 'https://www.youtube.com/watch?v=' + videoId
+      url: 'https://www.youtube.com/embed/' + videoId + '?autoplay=1'
     }
   })
 }

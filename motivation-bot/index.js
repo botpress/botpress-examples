@@ -80,7 +80,12 @@ module.exports = function(bp) {
             image_url: meta.thumbnail,
             subtitle: meta.description,
             buttons: [
-              { type: 'web_url', title: '🔥 Watch 🔥', url: meta.url },
+              {
+                type: 'web_url',
+                title: '🔥 Watch 🔥',
+                url: meta.url,
+                webview_height_ratio: 'full'
+              },
               { type: 'element_share' }
             ]
           }]
