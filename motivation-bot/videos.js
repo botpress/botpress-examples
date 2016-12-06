@@ -11,13 +11,11 @@ const videos = {
     "HQtZ4kud2qA",
     "puDQoBPpWyQ",
     "A0Scr2TW2ZA",
-    "oonaeUiKV8Y",
     "2zzj4CO9xSw",
     "twZgNP8iZBQ",
     "8QlvQC4MXxs"
   ],
   LIFE: [
-    "jE-Ajfd51aM",
     "6vuetQSwFW8",
     "7_R4AsV2fPI",
     "njQcOKOpFwk",
@@ -36,21 +34,19 @@ const videos = {
     "hV63DbQ_qSc",
     "YxzQ6umhH4Q",
     "lsSC2vx7zFQ",
-    "63Cv6Jiiink",
     "aMGoxlXmA0o",
     "at7QvbFy9fM",
     "qapsrR8zIJM",
     "vnMtpNhcDOE",
     "OV6-n5wtCWA",
-    "lpVRxa9jsrE",
-    "WDJaJbc9O-4"
+    "lpVRxa9jsrE"
   ]
 }
 
 const getYoutubeVideoMetadata = (videoId) => {
   const YOUTUBE_API_KEY = 'AIzaSyAp2kmHzUFdlD1b4N4XR0OhKUWnC_IVaAA'
   const apiUrl = `https://content.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=${YOUTUBE_API_KEY}`
-  
+
   return axios.get(apiUrl)
   .then(res => {
     const video = res.data.items[0].snippet
