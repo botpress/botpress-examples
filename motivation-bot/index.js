@@ -70,7 +70,7 @@ module.exports = function(bp) {
       bp.messenger.sendText(event.user.id, text, { typing: true })
 
       Promise.delay(1500)
-      .then(() => bp.sendRandomVideo(category, event))
+      .then(() => bp.sendRandomVideo(event.user.id, category))
     })
   }
 
@@ -82,10 +82,10 @@ module.exports = function(bp) {
     bp.messenger.sendText(event.user.id, text, pickCategory)
   }
 
-  bp.sendRandomVideo = (category, event) => {
+  bp.sendRandomVideo = (userId, category) => {
     return videos.getRandomVideo(category)
     .then(meta => {
-      bp.messenger.sendTemplate(event.user.id, {
+      bp.messenger.sendTemplate(userId, {
         template_type: 'generic',
         elements: [{
           title: meta.title,
