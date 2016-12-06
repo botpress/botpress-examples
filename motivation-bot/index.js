@@ -70,27 +70,7 @@ module.exports = function(bp) {
       bp.messenger.sendText(event.user.id, text, { typing: true })
 
       Promise.delay(1500)
-      .then(() => videos.getRandomVideo(category))
-      .then(meta => {
-        bp.messenger.sendTemplate(event.user.id, {
-          template_type: 'generic',
-          elements: [{
-            title: meta.title,
-            item_url: meta.url,
-            image_url: meta.thumbnail,
-            subtitle: meta.description,
-            buttons: [
-              {
-                type: 'web_url',
-                title: '🔥 Watch 🔥',
-                url: meta.url,
-                webview_height_ratio: 'full'
-              },
-              { type: 'element_share' }
-            ]
-          }]
-        })
-      })
+      .then(() => bp.sendRandomVideo(category, event))
     })
   }
 
@@ -100,5 +80,29 @@ module.exports = function(bp) {
   bp.botDefaultResponse = event => {
     const text = event.user.first_name + ", I told you, I'm a bit dumb. I assume you want motivation, cause that's all I'm able to do :)"
     bp.messenger.sendText(event.user.id, text, pickCategory)
+  }
+
+  bp.sendRandomVideo = (category, event) => {
+    return videos.getRandomVideo(category)
+    .then(meta => {
+      bp.messenger.sendTemplate(event.user.id, {
+        template_type: 'generic',
+        elements: [{
+          title: meta.title,
+          item_url: meta.url,
+          image_url: meta.thumbnail,
+          subtitle: meta.description,
+          buttons: [
+            {
+              type: 'web_url',
+              title: '🔥 Watch 🔥',
+              url: meta.url,
+              webview_height_ratio: 'full'
+            },
+            { type: 'element_share' }
+          ]
+        }]
+      })
+    })
   }
 }

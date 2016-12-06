@@ -61,6 +61,10 @@ const getYoutubeVideoMetadata = (videoId) => {
 
 module.exports = {
   getRandomVideo: (category) => {
+    if (!category) {
+      category = _.sample(_.keys(videos))
+    }
+    
     const videoId = _.sample(videos[category])
     return getYoutubeVideoMetadata(videoId)
   }
