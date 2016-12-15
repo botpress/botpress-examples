@@ -1,1 +1,1 @@
-{"manage_keywords":["MANAGE_SUBSCRIPTIONS"],"manage_action":"To unsubscribe, type: UNSUBSCRIBE_<CATEGORY>. Categories are: {{categories}}","manage_type":"text"}
+{"manage_keywords":["MANAGE_SUBSCRIPTIONS"],"manage_action":"bp.manageSubscriptions(bp, userId)","manage_type":"javascript"}
