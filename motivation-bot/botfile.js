@@ -5,7 +5,7 @@ module.exports = {
    * you can access this property from `bp.dataLocation`
    */
   dataDir: process.env.BOTPRESS_DATA_DIR || "./data",
-
+  port: 3000,
   modulesConfigDir: process.env.BOTPRESS_CONFIG_DIR || "./modules_config",
   disableFileLogs: false,
   notification: {

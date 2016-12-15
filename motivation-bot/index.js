@@ -1,6 +1,7 @@
 const Promise = require('bluebird')
 const _ = require('lodash')
 const videos = require('./videos')
+const schedules = require('./schedules')
 
 const TEXT_CATEGORIES = {
   WORK: [
@@ -38,6 +39,7 @@ const pickCategory = {
 
 module.exports = function(bp) {
   bp.middlewares.load()
+  schedules(bp)
 
   bp.hear({
     type: 'postback',

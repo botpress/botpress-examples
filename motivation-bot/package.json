@@ -13,7 +13,8 @@
     "botpress-rivescript": "^1.0.10",
     "botpress-scheduler": "^1.0.1",
     "botpress-subscription": "^1.0.2",
-    "lodash": "^4.17.2"
+    "lodash": "^4.17.2",
+    "moment": "^2.17.1"
   },
   "scripts": {
     "start": "botpress start",
