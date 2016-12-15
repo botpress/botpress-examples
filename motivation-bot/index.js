@@ -101,6 +101,11 @@ module.exports = function(bp) {
               url: meta.url,
               webview_height_ratio: 'full'
             },
+            {
+              type: 'postback',
+              title: '👉 Next video',
+              payload: 'GET_VIDEO_' + category
+            },
             { type: 'element_share' }
           ]
         }]
