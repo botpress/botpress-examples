@@ -13,9 +13,16 @@ const videos = {
     "A0Scr2TW2ZA",
     "2zzj4CO9xSw",
     "twZgNP8iZBQ",
-    "8QlvQC4MXxs"
+    "8QlvQC4MXxs",
+    "PF54jfEFhIM",
+    "CPQ1budJRIQ",
+    "_R8gBnhyMSA",
+    "350F0VsECvo",
+    "KA-6OwyGGfI",
+    "Q23Exmnio8s"
   ],
   LIFE: [
+    "6tbHYvH347A",
     "6vuetQSwFW8",
     "7_R4AsV2fPI",
     "njQcOKOpFwk",
@@ -26,7 +33,15 @@ const videos = {
     "ZkabeHig_r4",
     "FK16iXPRAjI",
     "4pxiU89O1wE",
-    "2otRxX6y7mQ"
+    "2otRxX6y7mQ",
+    "bGc9mXhdMkw",
+    "UMF_oJkOZmg",
+    "cRMogDrHnMQ",
+    "pfWGoLj1JCM",
+    "EyhOmBPtGNM",
+    "5fOiu0OdpoI",
+    "DNITe9snHqA",
+    "GtCD6e1fa_I"
   ],
   GYM: [
     "Fh-rCrREEgA",
@@ -39,7 +54,12 @@ const videos = {
     "qapsrR8zIJM",
     "vnMtpNhcDOE",
     "OV6-n5wtCWA",
-    "lpVRxa9jsrE"
+    "lpVRxa9jsrE",
+    "7fSLbC-1b0Q",
+    "n_8ZIYxtPvc",
+    "j0FFNcIYZMI",
+    "R1JBQMXbN2k",
+    "B_3pHAhhdM0"
   ]
 }
 
