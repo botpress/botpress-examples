@@ -5,14 +5,19 @@ const subscription = require('./subscription')
 
 const TEXT_CATEGORIES = {
   WORK: [
-    "Oh, yeah, work isn't always easy man. Let's fix that right away.",
-    "Listen to that, I bet you'll get a raise next week 💪"
+    "Hard work beats talent every time",
+    "The marketplace punishes those that don't work hard",
+    "You don't get paid for the time, you get paid for the value you bring"
   ],
   LIFE: [
-    "Take charge of your life NOW"
+    "This one is really worth a watch",
+    "You live only once.. don't mess it up",
+    "What are your goals?"
   ],
   GYM: [
-    "Want muscles?"
+    "Listening to that while on the threadmill will result in 20% more results",
+    "Happy to be your workout mate... Watch this!",
+    "If you are not pumped up after this video, I really don't know what to do"
   ]
 }
 
@@ -69,9 +74,9 @@ module.exports = function(bp) {
   const hearGetVideo = category => {
     bp.hear({ text: 'GET_VIDEO_' + category }, (event, next) => {
       const text = _.sample(TEXT_CATEGORIES[category])
-      bp.messenger.sendText(event.user.id, text, { typing: true })
+      bp.messenger.sendText(event.user.id, text)
 
-      Promise.delay(1500)
+      Promise.delay(1000)
       .then(() => bp.sendRandomVideo(event.user.id, category))
     })
   }
@@ -80,7 +85,15 @@ module.exports = function(bp) {
   _.keys(TEXT_CATEGORIES).forEach(hearGetVideo)
 
   bp.botDefaultResponse = event => {
-    const text = event.user.first_name + ", I told you, I'm a bit dumb. I assume you want motivation, cause that's all I'm able to do :)"
+    const ANSWERS = [
+      event.user.first_name + ", I told you, I'm a bit dumb. I assume you want motivation, 'cause that's all I'm able to do :)",
+      "I don't understand much of what you say " + event.user.first_name,
+      "I'm only here to give you motivation",
+      "My creators made me dumb on purpose, they say I shouldn't try to be human-like :s",
+      "I'm not here to talk " + event.user.first_name + ", I'm here to give you motivation!"
+    ]
+    
+    const text = _.sample(ANSWERS)
     bp.messenger.sendText(event.user.id, text, pickCategory)
   }
 

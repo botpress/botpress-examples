@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "botpress start",
+    "precommit": "node strip_tokens.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Botpress Team",
