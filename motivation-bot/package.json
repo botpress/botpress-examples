@@ -21,5 +21,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Botpress Team",
-  "license": "AGPL-3.0"
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "husky": "^0.12.0"
+  }
 }
