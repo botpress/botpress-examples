@@ -53,18 +53,19 @@ module.exports = function(bp) {
     const { first_name, last_name } = event.user
     bp.logger.info('New user:', first_name, last_name)
 
+    bp.subscription.subscribe(event.user.id, 'daily')
+
     const WELCOME_SENTENCES = [
-      "Hey there buddy pal, so I've heard that you need a little kick in the butt from time to time?",
-      "Don't worry mate, that's my job and I'll do that for you.",
-      "But man, I don't talk much.",
-      "I'm a bit dumb, to be honest. Let's just stick to using buttons, that's going to be easier for the both of us."
+      "hey, so I've heard that you need a little kick in the butt from time to time?\nDon't worry mate, that's my job and I'll do that for you 👏",
+      "In exchange I only ask from you that you don't talk to me like I was human.. I'm clearly not! 🤖",
+      "👉 let's just stick to using buttons, that's going to be easier for the both of us"
     ]
 
-    const WELCOME_TEXT_QUICK_REPLY = "THAT BEING SAID, choose a category right away and I'll make sure you get pumped up!"
+    const WELCOME_TEXT_QUICK_REPLY = "That being said, choose a category right away and I'll make sure you get pumped up!"
 
     Promise.mapSeries(WELCOME_SENTENCES, txt => {
       bp.messenger.sendText(event.user.id, txt, { typing: true })
-      return Promise.delay(4000)
+      return Promise.delay(2000)
     })
     .then(() => {
       bp.messenger.sendText(event.user.id, WELCOME_TEXT_QUICK_REPLY, pickCategory)
