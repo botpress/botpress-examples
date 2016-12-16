@@ -56,9 +56,9 @@ module.exports = function(bp) {
     bp.subscription.subscribe(event.user.id, 'daily')
 
     const WELCOME_SENTENCES = [
-      "hey, so I've heard that you need a little kick in the butt from time to time?\nDon't worry mate, that's my job and I'll do that for you 👏",
+      "Hey, so I've heard that you need a little kick in the butt from time to time? Don't worry mate, that's my job and I'll do that for you 👏",
       "In exchange I only ask from you that you don't talk to me like I was human.. I'm clearly not! 🤖",
-      "👉 let's just stick to using buttons, that's going to be easier for the both of us"
+      "👉 Let's just stick to using buttons, that's going to be easier for the both of us"
     ]
 
     const WELCOME_TEXT_QUICK_REPLY = "That being said, choose a category right away and I'll make sure you get pumped up!"
@@ -70,6 +70,10 @@ module.exports = function(bp) {
     .then(() => {
       bp.messenger.sendText(event.user.id, WELCOME_TEXT_QUICK_REPLY, pickCategory)
     })
+  })
+
+  bp.hear(/TRIGGER_DAILY/i, (event, next) => {
+    bp.sendDailyVideo(event.user.id)
   })
 
   const hearGetVideo = category => {
@@ -99,7 +103,7 @@ module.exports = function(bp) {
   }
 
   bp.sendRandomVideo = (userId, category) => {
-    return videos.getRandomVideo(category)
+    videos.getRandomVideo(category)
     .then(meta => {
       bp.messenger.sendTemplate(userId, {
         template_type: 'generic',
@@ -125,5 +129,36 @@ module.exports = function(bp) {
         }]
       })
     })
+
+    const n = _.random(0, 10)
+    if (n === 5) { // 10% chance of saying this
+      setTimeout(() => {
+        bp.messenger.sendText(userId, "PLEASE! If you enjoy the service I am giving you, consider sharing the card below with some of your friends 👇!")
+
+        setTimeout(() => {
+          bp.messenger.sendTemplate(userId, {
+            template_type: 'generic',
+            elements: [{
+              title: 'Clicking this button could literally change your life',
+              item_url: 'https://m.me/boostfuel',
+              image_url: 'https://s27.postimg.org/dl8i0udqb/motivation_on_demand.png',
+              buttons: [{
+                type: 'web_url',
+                title: '👏 Make it happen',
+                url: 'https://m.me/boostfuel'
+              }, { type: 'element_share' }]
+            }]
+          })
+        }, 2000)
+      }, 15 * 1000)
+    }
+  }
+
+  bp.sendDailyVideo = (userId) => {
+    const category = _.sample(_.keys(TEXT_CATEGORIES))
+    const text = "Here's your daily motivational video, have an excellent day 😁!"
+
+    bp.messenger.sendText(userId, text)
+    setTimeout(() => bp.sendRandomVideo(userId, category), 1000)
   }
 }

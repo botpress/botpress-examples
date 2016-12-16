@@ -28,7 +28,7 @@ const scheduleBroadcast = (bp, api) => () => {
     time: '08:00',
     timezone: null, // users timezone
     type: 'javascript',
-    content: "bp.sendRandomVideo(userId, 'LIFE')", // TODO Add text
+    content: "bp.sendDailyVideo(userId)",
     filters: ["bp.subscription.isSubscribed(userId, 'daily')"]
   })
   .catch(err => {
