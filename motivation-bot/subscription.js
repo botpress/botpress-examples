@@ -32,7 +32,7 @@ const scheduleBroadcast = (bp, api) => () => {
     filters: ["bp.subscription.isSubscribed(userId, 'daily')"]
   })
   .catch(err => {
-    bp.logger.error(err)
+    bp.logger.error(err.response.data)
     bp.notifications.send({
       level: 'error',
       message: 'Could not schedule broadcast. See logs.'
@@ -41,7 +41,7 @@ const scheduleBroadcast = (bp, api) => () => {
 }
 
 module.exports = bp => {
-  const token = bp.security.login('admin', bp.botfile.login.password, '127.0.0.1')
+  const token = bp.security.login('admin', bp.botfile.login.password, '127.0.0.1').token
 
   const api = axios.create({
     baseURL: 'http://localhost:' + bp.botfile.port + '/api/',
