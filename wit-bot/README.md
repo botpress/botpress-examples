@@ -83,13 +83,15 @@ You need to switch of mode in `botpress-wit` module to **stories**. As you proba
 
 **Note 2**: The **stories** mode will run your Wit.ai stories automatically given that you defined the Actions in botpress. For more information about Actions and how they are run, make sure to read [node-wit's documentation](https://github.com/wit-ai/node-wit).
 
+### 9. Begin a stories
 
+Directly on Wit.ai, you will need to create a new story. First, we will begin by a simple _hello world_ to test if everything works from the beginning. You can create your own interaction to test the bot if you want to.
 
+<img src='./assets/wit-hello.png' height=500px />
 
+If everything works fine from the begin of the tutorial, your bot is supposed to work and answer to `Hello!` if you chat with it directly on [Messenger](https://www.messenger.com/) or [Facebook](https://www.facebook.com).
 
-If everything works fine from the begin of the tutorial, your bot is supposed to work and answer to `BOT_LICENSE` if you chat with it directly on [Messenger](https://www.messenger.com/) or [Facebook](https://www.facebook.com).
-
-**Note**: `BOT_LICENSE` is a built-in command to print basic information about your bot (name, version, licenses).
+<img src='./assets/wit-test.png' height=300px />
 
 
 
