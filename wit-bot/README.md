@@ -1,8 +1,8 @@
 # Tutorial
 
-This tutorial will show you how easy it is to build a bot using Messenger and Wit.ai. For this purpose, we will build a bot from scratch and we will end up with a  weather bot in about 30 minutes. If you have any problem, do not hesitate to talk to us on our [Public Chatroom](https://gitter.im/botpress/core), it will be a pleasure for us to answer your requests.
+This tutorial will show you how easy it is to build a bot using Messenger and Wit.ai. For this purpose, we will build a bot from scratch and we will end up with a simple weather bot in about 30 minutes. If you have any problem, do not hesitate to talk to us on our [Public Chatroom](https://gitter.im/botpress/core), it will be a pleasure for us to answer your requests.
 
-If you don't want to follow up our step-by-step guide, you can clone this repository and just try it by linking it to a Facebook Page (Step #6) and you Wit.ai account. If you clone the repository, don't forget to run `npm install` in your cloned repository.
+If you don't want to follow up our step-by-step guide, you can clone this repository and just try it by linking it to a Facebook Page (Step #6) and you Wit.ai account (Step #7). If you clone the repository, don't forget to run `npm install` in your cloned repository.
 
 ## Requirements
 
@@ -67,17 +67,19 @@ Briefly, you only need to create a [Facebook Page](https://www.facebook.com/page
 
 The next step is to link your `botpress-wit` module to your Wit.ai account. To do it, you only need to fill `Access token` field in the UI of the module.
 
-<img src='./assets/wit-module.png' height=500px />
+<img src='./assets/wit-settings.png' height=200px />
 
 First, you need to create an account on http://www.wit.ai if you don't already have one. Once your account is created, you now have to create a new application on Wit.ai, but by default, if you just created your account, you are supposed to already have one application initialize (MyFirstApp).
 
 To find your access token, you need to go in **Settings** and in **API Details** panel, you will find it.
 
-<img src='./assets/wit-access-token.png' height=300px />
+<img src='./assets/wit-access-token.png' height=350px />
 
 ### 8. Select Wit.ai mode
 
 You need to switch of mode in `botpress-wit` module to **stories**. As you probably notice, `botpress-wit` module offers two different modes: **understanding** and **story**.
+
+<img src='./assets/wit-documentation.png' height=300px />
 
 **Note 1**: The **understanding** mode will inject understanding metadata inside incoming messages through the Wit.ai middleware. Events will have a wit property populated with the extracted entities and the context.
 
