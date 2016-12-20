@@ -117,7 +117,7 @@ Once all the setup is done, we are now ready to implement this action in your bo
 
 ### 12. Implement `getWeather()` action
 
-Now, open `index.js` file and write (or copy) those lines of code. In fact, what we want exactly is to implement `getWeather()` and add `weather` to `context`. To do that, we just call an external API to get weather and we return context object to Wit.ai.
+Now, open `index.js` file and write (or copy) those lines of code. In fact, what we want exactly is to implement `getWeather()` and add `weather` to our `context` object. To do that, we just call an external API to get weather and we return modified `context` object to Wit.ai.
 
 ```js
 var syncRequest = require('sync-request');
