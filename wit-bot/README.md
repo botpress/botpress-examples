@@ -67,7 +67,7 @@ Briefly, you only need to create a [Facebook Page](https://www.facebook.com/page
 
 The next step is to link your `botpress-wit` module to your Wit.ai account. To do it, you only need to fill `Access token` field in the UI of the module.
 
-<img src='./assets/wit-settings.png' height=200px />
+<img src='./assets/wit-settings.png' height=140px />
 
 First, you need to create an account on http://www.wit.ai if you don't already have one. Once your account is created, you now have to create a new application on Wit.ai, but by default, if you just created your account, you are supposed to already have one application initialize (MyFirstApp).
 
@@ -79,7 +79,7 @@ To find your access token, you need to go in **Settings** and in **API Details**
 
 You need to switch of mode in `botpress-wit` module to **stories**. As you probably notice, `botpress-wit` module offers two different modes: **understanding** and **story**.
 
-<img src='./assets/wit-documentation.png' height=300px />
+<img src='./assets/wit-documentation.png' height=400px />
 
 **Note 1**: The **understanding** mode will inject understanding metadata inside incoming messages through the Wit.ai middleware. Events will have a wit property populated with the extracted entities and the context.
 
