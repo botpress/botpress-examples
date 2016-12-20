@@ -1,0 +1,17 @@
+{
+  "name": "wit-bot",
+  "version": "0.0.1",
+  "description": "This is a tutorial to show how to use Wit.ai on Botpress",
+  "main": "index.js",
+  "dependencies": {
+    "botpress": "0.x",
+    "botpress-messenger": "^1.0.13",
+    "botpress-wit": "^1.0.2"
+  },
+  "scripts": {
+    "start": "botpress start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Botpress",
+  "license": "AGPL-3.0"
+}
