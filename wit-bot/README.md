@@ -95,7 +95,11 @@ If everything works fine from the begin of the tutorial, your bot is supposed to
 
 <img src='./assets/wit-test.png' height=200px />
 
+**Note**: From there, if you want to only build a conversation using Wit.ai, you have everything you need and you didn't have to code anything.
 
+### 10. Add an weather action interaction
+
+Now, we have a basic _hello world_ conversation, we will need add some actions to answer to weather question. To do that, in Wit.ai again, we will add a conversation with intent and 
 
 
 
