@@ -99,11 +99,71 @@ If everything works fine from the begin of the tutorial, your bot is supposed to
 
 ### 10. Add an weather action interaction
 
-Now, we have a basic _hello world_ conversation, we will need add some actions to answer to weather question. To do that, in Wit.ai again, we will add a conversation with intent and
+Now, we have a basic _hello world_ conversation, but what we want is to answer to weather. To do that, in Wit.ai again, we will change our conversation to answer weather and precisely, what you need to do is to add a basic interaction where we ask to Wit.ai to call our action `getWeather()`.
 
+<img src='./assets/wit-weather.png' height=400px />
 
+### 7. Open in editor
 
+Once all the setup is done, we are now ready to implement this action in your bot. First thing you need to do is to open your repository with your favorite editor (Sublime, Atom, WebStorm, Netbeans...). As you can see, some files and directories have already been created when you initialize it before to accelerate development.
 
+```js
+- botfile.js // your bot's configuration. botpress uses this
+- index.js // your bot's entry point. bot logic goes here
+- package.json // regular node package.json file
+- LICENSE // your bot license, either AGPLv3 or Botpress License
+- .gitignore // ignoring some botpress-created files by default
+```
+
+### 11. Implement `getWeather` action
+
+Now, open `index.js` file and write (or copy) those lines of code. In fact, what we want exactly is to implement `getWeather()` and add `weather` to `context`. To do that, we just call an external API to get weather and we return context object to Wit.ai.
+
+```js
+var syncRequest = require('sync-request');
+
+const getRequestAPI = (location, units) => {
+  const OPEN_WEATHER_API_KEY = '<YOUR_API_KEY>'
+  return "http://api.openweathermap.org/data/2.5/weather?" +
+    "q=" + location +
+    "&units=" + units +
+    "&appid=" + OPEN_WEATHER_API_KEY
+}
+
+module.exports = function(bp) {
+  bp.middlewares.load()
+
+  // Implement your Actions like this
+  bp.wit.actions['getWeather'] = request => {
+    return new Promise((resolve, reject) => {
+
+      // Get location from entities
+      const location = request.entities.location[0].value
+
+      //Get temperature from API
+      const requestAPI = getRequestAPI(location, 'metric')
+      const res = JSON.parse(syncRequest('GET', requestAPI).body);
+      const temperature = res.main.temp
+
+      request.context.weather = temperature + ' C'
+      resolve(request.context)
+    })
+  }
+
+  // You need to call this method once you are done implementing the Actions
+  bp.wit.reinitializeClient()
+}
+```
+
+**Note**: If you want to run this bot, you will need to register yourself to http://api.openweathermap.org/ and get your own `<YOUR_API_KEY>`.
+
+### 12. Chat with your bot
+
+Once everything is done, you should now be able to chat with your bot and ask him the actual weather where you want.
+
+<img src='./assets/wit-conversation-weather.png' height=400px />
+
+Here, we only implement a basic interaction, but with our `botpress-wit` module, you can achieve a lot more. You only need to implement your actions, use Wit.ai to build your conversation and will be able to build **awesome** bot.
 
 ## Have fun
 
@@ -119,4 +179,4 @@ We have a [Public Chatroom](https://gitter.im/botpress/core), everybody is invit
 
 ## License
 
-motivation-bot is licensed under [AGPL-3.0](/LICENSE)
+wit-bot is licensed under [AGPL-3.0](/LICENSE)
