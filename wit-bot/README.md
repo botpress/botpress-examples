@@ -163,7 +163,7 @@ Once everything is done, you should now be able to chat with your bot and ask hi
 
 <img src='./assets/wit-conversation-weather.png' height=250px />
 
-Here, we only implement a basic interaction, but with our `botpress-wit` module, you can achieve a lot more. You only need to implement your actions, use Wit.ai to build your conversation and will be able to build **awesome** bot.
+**Note**: Here, we only implement a basic interaction, but with our `botpress-wit` module, you can achieve a lot more. You only need to implement your actions, use Wit.ai to build your conversation and will be able to build **awesome** bot.
 
 ## Have fun
 
