@@ -87,11 +87,11 @@ You need to switch of mode in `botpress-wit` module to **stories**. As you proba
 
 Directly on Wit.ai, you will need to create a new story. First, we will begin by a simple _hello world_ to test if everything works from the beginning. You can create your own interaction to test the bot if you want to.
 
-<img src='./assets/wit-hello.png' height=500px />
+<img src='./assets/wit-hello.png' height=400px />
 
 If everything works fine from the begin of the tutorial, your bot is supposed to work and answer to `Hello!` if you chat with it directly on [Messenger](https://www.messenger.com/) or [Facebook](https://www.facebook.com).
 
-<img src='./assets/wit-test.png' height=300px />
+<img src='./assets/wit-test.png' height=200px />
 
 
 
