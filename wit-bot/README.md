@@ -67,7 +67,7 @@ Briefly, you only need to create a [Facebook Page](https://www.facebook.com/page
 
 The next step is to link your `botpress-wit` module to your Wit.ai account. To do it, you only need to fill `Access token` field in the UI of the module.
 
-<img src='./assets/wit-module.png' height=300px />
+<img src='./assets/wit-module.png' height=500px />
 
 First, you need to create an account on http://www.wit.ai if you don't already have one. Once your account is created, you now have to create a new application on Wit.ai, but by default, if you just created your account, you are supposed to already have one application initialize (MyFirstApp).
 
