@@ -75,7 +75,7 @@ To find your access token, you need to go in **Settings** and in **API Details**
 
 <img src='./assets/wit-access-token.png' height=300px />
 
-### 8 Select Wit.ai mode
+### 8. Select Wit.ai mode
 
 You need to switch of mode in `botpress-wit` module to **stories**. As you probably notice, `botpress-wit` module offers two different modes: **understanding** and **story**.
 
