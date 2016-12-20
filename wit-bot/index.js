@@ -1,7 +1,7 @@
-var syncRequest = require('sync-request');
+var syncRequest = require('sync-request')
 
-const getRequestAPI = (location, units) => {
-  const OPEN_WEATHER_API_KEY = '<YOUR_API_KEY>'
+const getLocationWeatherUrl = (location, units) => {
+  const OPEN_WEATHER_API_KEY = process.env.WEATHER_API || '<YOUR_API_KEY>'
   return "http://api.openweathermap.org/data/2.5/weather?" +
     "q=" + location +
     "&units=" + units +
@@ -19,8 +19,8 @@ module.exports = function(bp) {
       const location = request.entities.location[0].value
 
       //Get temperature from API
-      const requestAPI = getRequestAPI(location, 'metric')
-      const res = JSON.parse(syncRequest('GET', requestAPI).body);
+      const requestAPI = getLocationWeatherUrl(location, 'metric')
+      const res = JSON.parse(syncRequest('GET', requestAPI).body)
       const temperature = res.main.temp
 
       request.context.weather = temperature + ' C'
