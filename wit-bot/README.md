@@ -99,11 +99,11 @@ If everything works fine from the begin of the tutorial, your bot is supposed to
 
 ### 10. Add an weather action interaction
 
-Now, we have a basic _hello world_ conversation, but what we want is to answer to weather. To do that, in Wit.ai again, we will change our conversation to answer weather and precisely, what you need to do is to add a basic interaction where we ask to Wit.ai to call our action `getWeather()`.
+Now, we have a basic _hello world_ conversation, but what we want is to answer to weather. To do that, in Wit.ai again, what we need is to add some basic interactions where we ask to Wit.ai to call our action `getWeather()`.
 
 <img src='./assets/wit-weather.png' height=400px />
 
-### 7. Open in editor
+### 11. Open in editor
 
 Once all the setup is done, we are now ready to implement this action in your bot. First thing you need to do is to open your repository with your favorite editor (Sublime, Atom, WebStorm, Netbeans...). As you can see, some files and directories have already been created when you initialize it before to accelerate development.
 
@@ -115,7 +115,7 @@ Once all the setup is done, we are now ready to implement this action in your bo
 - .gitignore // ignoring some botpress-created files by default
 ```
 
-### 11. Implement `getWeather` action
+### 12. Implement `getWeather()` action
 
 Now, open `index.js` file and write (or copy) those lines of code. In fact, what we want exactly is to implement `getWeather()` and add `weather` to `context`. To do that, we just call an external API to get weather and we return context object to Wit.ai.
 
@@ -157,11 +157,11 @@ module.exports = function(bp) {
 
 **Note**: If you want to run this bot, you will need to register yourself to http://api.openweathermap.org/ and get your own `<YOUR_API_KEY>`.
 
-### 12. Chat with your bot
+### 13. Chat with your bot
 
 Once everything is done, you should now be able to chat with your bot and ask him the actual weather where you want.
 
-<img src='./assets/wit-conversation-weather.png' height=400px />
+<img src='./assets/wit-conversation-weather.png' height=250px />
 
 Here, we only implement a basic interaction, but with our `botpress-wit` module, you can achieve a lot more. You only need to implement your actions, use Wit.ai to build your conversation and will be able to build **awesome** bot.
 
