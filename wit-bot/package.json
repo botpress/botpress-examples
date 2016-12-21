@@ -4,14 +4,11 @@
   "description": "This is a tutorial to show how to use Wit.ai on Botpress",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.15.3",
+    "bluebird": "^3.4.6",
     "botpress": "0.x",
     "botpress-messenger": "^1.0.13",
-    "botpress-wit": "^1.0.2",
-    "forecast": "^0.3.2",
-    "request": "^2.79.0",
-    "request-promise": "^4.1.1",
-    "sync-request": "^3.0.1",
-    "weather.js": "0.0.3"
+    "botpress-wit": "^1.0.2"
   },
   "scripts": {
     "start": "botpress start",
