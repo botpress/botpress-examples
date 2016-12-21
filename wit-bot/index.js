@@ -1,7 +1,10 @@
-var syncRequest = require('sync-request')
+const Promise = require('bluebird')
+const axios = require('axios')
 
-const getLocationWeatherUrl = (location, units) => {
-  const OPEN_WEATHER_API_KEY = process.env.WEATHER_API || '<YOUR_API_KEY>'
+// Get yours here: https://openweathermap.org/appid
+const OPEN_WEATHER_API_KEY = process.env.WEATHER_API || '<YOUR_API_KEY>'
+
+const getLocationWeatherUrl = (location, units) => {  
   return "http://api.openweathermap.org/data/2.5/weather?" +
     "q=" + location +
     "&units=" + units +
@@ -13,18 +16,21 @@ module.exports = function(bp) {
 
   // Implement your Actions like this
   bp.wit.actions['getWeather'] = request => {
-    return new Promise((resolve, reject) => {
+    // Get location from extracted entities
+    const location = request.entities.location[0].value
 
-      // Get location from entities
-      const location = request.entities.location[0].value
+    const url = getLocationWeatherUrl(location, 'metric')
 
-      //Get temperature from API
-      const requestAPI = getLocationWeatherUrl(location, 'metric')
-      const res = JSON.parse(syncRequest('GET', requestAPI).body)
-      const temperature = res.main.temp
+    // Fetch temperature from API
+    return axios.get(url)
+    .then(res => {
+      const temperature = res.data.main.temp
 
-      request.context.weather = temperature + ' C'
-      resolve(request.context)
+      // setting the temperature in Wit context
+      request.context.weather = temperature + '°C'
+
+      // return the new context back to Wit
+      return request.context
     })
   }
 
