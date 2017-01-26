@@ -1,6 +1,6 @@
 # Tutorial
 
-This tutorial will show you how easy it is to build a 'hello world' using Botpress and Messenger. It supposed to be really short to do, it should take you less than 10 minutes and you don't need to write any line of code... If you have any problem, do not hesitate to talk to us on our [Public Chatroom](https://gitter.im/botpress/core), it will be a pleasure for us to answer your requests.
+This tutorial will show you how easy it is to build a 'hello world' using Botpress and Messenger. It supposed to be really short to do, it should take you less than 10 minutes and you don't need to write any line of code... If you have any problem, do not hesitate to talk to us on our [Slack Community](https://slack.botpress.io), it will be a pleasure for us to answer your requests.
 
 ## Requirements
 
@@ -98,7 +98,9 @@ Feel free to fork our bot, send pull requests, clone it, send any comment...
 
 Pull requests are welcomed! We believe that it takes all of us to create something big and impactful.
 
-We have a [Public Chatroom](https://gitter.im/botpress/core), everybody is invited to come and share ideas, issues or simply get in touch.
+There's a [Slack community](https://slack.botpress.io) where you are welcome to join us, ask any question and even help others.
+
+Get an invite and join us now! 👉[https://slack.botpress.io](https://slack.botpress.io)
 
 ## License
 
