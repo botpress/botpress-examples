@@ -1,8 +1,8 @@
 # Tutorial
 
-This tutorial will show you how easy it is to build a bot using Messenger and Wit.ai. For this purpose, we will build a bot from scratch and we will end up with a simple weather bot in about 30 minutes. If you have any problem, do not hesitate to talk to us on our [Slack Community](https://slack.botpress.io), it will be a pleasure for us to answer your requests.
+This tutorial will show you how easy it is to build a bot using Messenger and Wit.ai. For this purpose, we will build a bot from scratch and we will end up with a simple weather bot in about 30 minutes. If run into problems, do not hesitate to talk to us on our [Slack Community](https://slack.botpress.io); it will be a pleasure for us to answer your requests.
 
-If you don't want to follow up our step-by-step guide, you can clone this repository and just try it by linking it to a Facebook Page (Step #6) and you Wit.ai account (Step #7). If you clone the repository, don't forget to run `npm install` in your cloned repository.
+If you don't want to follow our step-by-step guide, you can clone this repository and just try it by linking it to a Facebook page (Step #6) and your Wit.ai account (Step #7). If you clone this repository, don't forget to run `npm install` in your cloned repository.
 
 ## Requirements
 
@@ -12,7 +12,7 @@ Botpress requires [node](https://nodejs.org) (version >= 4.2) and uses [npm](htt
 
 ### 1. Install
 
-First thing you need to have `botpress` installed as a general dependency using `npm`. If it's done yet, you only need to install it using the following command.
+You need to have `botpress` installed as a general dependency using `npm`. If it's already done, you only need to install it using the following command (make sure to install it globally).
 
 ```
 npm install -g botpress
@@ -20,7 +20,7 @@ npm install -g botpress
 
 ### 2. Create a new repository
 
-Once `botpress` has been installed, in your command line tool, you need to create a new repository and move into it.
+Once `botpress` has been installed, you need to create a new repository and cd into it.
 
 ```js
 mkdir wit-bot && cd wit-bot // Mac and Linux users
@@ -30,7 +30,7 @@ md wit-bot && cd wit-bot // Windows users
 
 ### 3. Initialization
 
-Now, let's simply use command line interface to initialize your bot. To do it, you need to run the following command.
+Now, let's use the command line interface to initialize your bot. You need to run the following command.
 
 ```
 botpress init
@@ -38,7 +38,7 @@ botpress init
 
 ### 4. Install modules
 
-Directly in your command line again, you need to install [botpress-messenger](https://github.com/botpress/botpress-messenger) module to connect your bot to a Facebook Page. Also, we will need (botpress-wit)[https://github.com/botpress/botpress-messenger to connect our bot to your Wit.ai account.
+Directly in your command line again, you need to install the [botpress-messenger](https://github.com/botpress/botpress-messenger) module to connect your bot to a Facebook page. Also, make sure to install the [botpress-wit](https://github.com/botpress/botpress-wit) module to connect our bot to your Wit.ai account.
 
 ```
 botpress install messenger wit
@@ -46,78 +46,82 @@ botpress install messenger wit
 
 ### 5. Start
 
-Once you have everything installed, you can start your bot and see what have been installed on it.
+Once you have everything installed, you can start your bot and see what it includes.
 
 ```
 botpress start
 ```
 
-Go to http://localhost:3000 and from there you can install other modules if you want to, but for this tutorial we only need `botpress-messenger` and `botpress-wit` which are supposed to be already installed.
+Go to http://localhost:3000 and from there you can install other modules as desired, but for this tutorial we only need `botpress-messenger` and `botpress-wit` which are supposed to already be installed.
 
-### 6. Configure Messenger connexion settings
+### 6. Configure Messenger connection settings
 
-Before starting coding it, we need to configure Messenger then it will be linked directly to your Facebook Page. To do this step, you can follow our [5 steps](https://github.com/botpress/botpress-messenger#get-started) guide in botpress-messenger documentation.
+Before starting to code, you need to configure Messenger so it's connected directly to your Facebook page. To do this step, you can follow our [getting started](https://github.com/botpress/botpress-messenger#get-started) guide in the `botpress-messenger` documentation.
 
 <img src='./assets/messenger-connexion-settings.png' height=300px />
 
-Briefly, you only need to create a [Facebook Page](https://www.facebook.com/pages/create) if you don't already have one and create a new [Messenger Application](https://developers.facebook.com/) on Facebook Developers Interface. After that, you need to find your **App ID**, **App Secret** and **Token Access**, and copy them directly in your web messenger [module interface](http://localhost:3000/modules/botpress-messenger). Finally, you only need to activate [**ngrok**](https://ngrok.com/), **validate** and **connect** your bot.
+Briefly, you only need to create a [Facebook page](https://www.facebook.com/pages/create) if you don't already have one. You also need to create a new [Messenger Application](https://developers.facebook.com/) on Facebook. After that, you should find your **App ID**, **App Secret**, and **Token Access**, and paste them directly into the `botpress-messenger` module settings of the [Botpress user interface](http://localhost:3000/modules/botpress-messenger) running locally. Finally, you only need to activate [**ngrok**](https://ngrok.com/), **validate**, and **connect** your bot.
+
+For further information on configuring `botpress-messenger` see the [Getting Started documentation](https://docs.botpress.io/getting-started.html).
 
 
 ### 7. Configure your Wit.ai account
 
-The next step is to link your `botpress-wit` module to your Wit.ai account. To do it, you only need to fill `Access token` field in the UI of the module.
+The next step is to link your `botpress-wit` module to your Wit.ai account. To do this, you only need to fill the **Access token** field in the user interface of the module.
 
 <img src='./assets/wit-settings.png' height=140px />
 
-First, you need to create an account on http://www.wit.ai if you don't already have one. Once your account is created, you now have to create a new application on Wit.ai, but by default, if you just created your account, you are supposed to already have one application initialize (MyFirstApp).
+First, you need to create an account on the [Wit.ai homepage](http://www.wit.ai) if you don't already have one. Once your account is created, you now have to create a new application on Wit.ai. By default however, if you just created your account, an application should automatically be created for you (MyFirstApp).
 
-To find your access token, you need to go in **Settings** and in **API Details** panel, you will find it.
+Click on **Settings** and then look in the **API Details** panel to copy your `Server Access Token`.
 
 <img src='./assets/wit-access-token.png' height=350px />
 
 ### 8. Select Wit.ai mode
 
-You need to switch of mode in `botpress-wit` module to **stories**. As you probably notice, `botpress-wit` module offers two different modes: **understanding** and **story**.
+Next, you need to switch the mode in the `botpress-wit` module from Understanding to Stories by selecting the **Stories** checkbox.
 
 <img src='./assets/wit-documentation.png' height=400px />
 
-**Note 1**: The **understanding** mode will inject understanding metadata inside incoming messages through the Wit.ai middleware. Events will have a wit property populated with the extracted entities and the context.
+- Understanding mode will inject understanding metadata inside incoming messages through the Wit.ai middleware. Events will have a wit property populated with the extracted entities and the context.
 
-**Note 2**: The **stories** mode will run your Wit.ai stories automatically given that you defined the Actions in botpress. For more information about Actions and how they are run, make sure to read [node-wit's documentation](https://github.com/wit-ai/node-wit).
+- Stories mode will run your Wit.ai stories automatically given that you defined the Actions in botpress. For more information about Actions and how they are run, make sure to read [node-wit's documentation](https://github.com/wit-ai/node-wit).
 
-### 9. Begin a stories
+### 9. Create a story
 
-Directly on Wit.ai, you will need to create a new story. First, we will begin by a simple _hello world_ to test if everything works from the beginning. You can create your own interaction to test the bot if you want to.
+You will need to create a new story or interaction in your Wit.ai account. We will begin by creating a simple "hello world" story to test if everything works. You can create your own interaction to test the bot if you want to. (Do make sure to click **Save story** when done.)
 
 <img src='./assets/wit-hello.png' height=400px />
 
-If everything works fine from the begin of the tutorial, your bot is supposed to work and answer to `Hello!` if you chat with it directly on [Messenger](https://www.messenger.com/) or [Facebook](https://www.facebook.com).
+If everything works fine, your bot should respond appropriately when you type `Hello!` on [Messenger](https://www.messenger.com/) or [Facebook](https://www.facebook.com).
 
 <img src='./assets/wit-test.png' height=200px />
 
-**Note**: From there, if you want to only build a conversation using Wit.ai, you have everything you need and you didn't have to code anything.
+**Note**: From here, if you want to only build a conversation using Wit.ai, you have everything you need without having to have code anything.
 
-### 10. Add an weather action interaction
+### 10. Add a weather action
 
-Now, we have a basic _hello world_ conversation, but what we want is to answer to weather. To do that, in Wit.ai again, what we need is to add some basic interactions where we ask to Wit.ai to call our action `getWeather()`.
+Now that we have a basic "hello world" conversation, we want to ask about the weather. To do that, we need to add some basic interactions where we ask Wit.ai to call our action `getWeather()`.
+
+We do this by adding another story or interaction as shown below. Make sure to specify the `wit/location` entity. When entering the **weather** context, you can leave the **context-key** field blank.
 
 <img src='./assets/wit-weather.png' height=400px />
 
-### 11. Open in editor
+### 11. Open your repo in an editor
 
-Once all the setup is done, we are now ready to implement this action in your bot. First thing you need to do is to open your repository with your favorite editor (Sublime, Atom, WebStorm, Netbeans...). As you can see, some files and directories have already been created when you initialize it before to accelerate development.
+Once you've set up these two interactions in Wit.ai, you need to implement this action in your bot. To do this, open your repository in your code editor (Sublime, Atom, WebStorm, Netbeans, ...). As you can see, some files and directories have already been created when you had previously initialized the repo with `botpress init`:
 
 ```js
-- botfile.js // your bot's configuration. botpress uses this
-- index.js // your bot's entry point. bot logic goes here
+- botfile.js // your bot's configuration
+- index.js // your bot's entry point. the bot logic goes here
 - package.json // regular node package.json file
 - LICENSE // your bot license, either AGPLv3 or Botpress License
-- .gitignore // ignoring some botpress-created files by default
+- .gitignore // ignore some botpress-created files by default
 ```
 
-### 12. Implement `getWeather()` action
+### 12. Implement the `getWeather()` action
 
-Now, open `index.js` file and write (or copy) those lines of code. In fact, what we want exactly is to implement `getWeather()` and add `weather` to our `context` object. To do that, we just call an external API to get weather and we return modified `context` object to Wit.ai.
+Now, open `index.js` and write (or paste) the following lines of code. We want to implement `getWeather()` and add `weather` to our `context` object. To do that, we call an external API to get the weather and we return a modified `context` object to Wit.ai.
 
 ```js
 var syncRequest = require('sync-request');
@@ -155,29 +159,31 @@ module.exports = function(bp) {
 }
 ```
 
-**Note**: If you want to run this bot, you will need to register yourself to http://api.openweathermap.org/ and get your own `<YOUR_API_KEY>`.
+**Note 1**: If you want to run this bot, you will need to register with [OpenWeatherMap](http://api.openweathermap.org/) and get your own `<YOUR_API_KEY>`.
+
+**Note 2**: Make sure the npm module `sync-request` is installed before running the above code.
 
 ### 13. Chat with your bot
 
-Once everything is done, you should now be able to chat with your bot and ask him the actual weather where you want.
+Once everything is done, you should now be able to chat with your bot and ask him about current weather at the location you want.
 
 <img src='./assets/wit-conversation-weather.png' height=250px />
 
-**Note**: Here, we only implement a basic interaction, but with our `botpress-wit` module, you can achieve a lot more. You only need to implement your actions, use Wit.ai to build your conversation and will be able to build **awesome** bot.
+**Note**: Here we only implemented a basic interaction. But with our `botpress-wit` module you can achieve far more. Now it's your turn to implement your own actions using Wit.ai to build conversations. And in doing so, you will build an **awesome** bot.
 
 ## Have fun
 
-Building a bot with Botpress is simple as that! Just notice, it takes us only a few hours and everything was done (code and tutorial)...
+Building a bot with botpress is as simple as that! In fact, it took us only a relatively short amount of time to do everything (code and tutorial).
 
-Feel free to fork our bot, send pull requests, clone it, send any comment...
+Feel free to fork our bot, send pull requests, clone it, send comments, etc.
 
 ## Community
 
-Pull requests are welcomed! We believe that it takes all of us to create something big and impactful.
+Pull requests are welcome! We believe that it takes all of us to create something big and impactful.
 
-There's a [Slack community](https://slack.botpress.io) where you are welcome to join us, ask any question and even help others.
+There's a [Slack community](https://slack.botpress.io) where you are welcome to join us, ask any question, and even help others.
 
-Get an invite and join us now! 👉[https://slack.botpress.io](https://slack.botpress.io)
+Get an invite to join us now! 👉[https://slack.botpress.io](https://slack.botpress.io)
 
 ## License
 
