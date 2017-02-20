@@ -56,7 +56,7 @@ Go to http://localhost:3000 and from there you can install other modules as desi
 
 ### 6. Configure Messenger connection settings
 
-Before starting to code, you need to configure Messenger so it's connected directly to your Facebook page. To do this step, you can follow our [getting started](https://github.com/botpress/botpress-messenger#get-started) guide in the `botpress-messenger` documentation.
+Before starting to code, you need to configure Messenger so it's connected directly to your Facebook page. If this is your first time to configure Messenger, we recommend following our [getting started guide](https://docs.botpress.io/getting-started.html) in the official Botpress documentation.
 
 <img src='./assets/messenger-connexion-settings.png' height=300px />
 
