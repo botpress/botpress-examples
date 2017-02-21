@@ -1,6 +1,6 @@
 # Tutorial
 
-This tutorial will show you how easy it is to build a "hello world" bot using Botpress and Messenger. This exercise should take you less than 10 minutes. If you have any problems, don't hesitate to talk to us on our [Public Community](https://slack.botpress.io). It will be a pleasure for us to answer your requests.
+This tutorial will show you how easy it is to build a basic "hello world" bot using the Botpress and Messenger modules. This exercise should take you less than 10 minutes. If you have any problems, don't hesitate to talk to us on our [Public Community](https://slack.botpress.io). It will be a pleasure for us to answer your requests.
 
 ## Requirements
 
@@ -89,7 +89,7 @@ module.exports = function(bp) {
 
 **Note:** When you are coding, using a to do list is good practice because it helps you to stay focused and to know exactly what needs to be done.
 
-### 9. Answering to hello world
+### 9. Answer a hello world user message
 
 First, we will set up a basic answer to "hello world" from Facebook. You simply write (or paste) these lines into `index.js`.
 
@@ -117,7 +117,7 @@ We use `hear` which is a built-in function of `bp` to listen on specific `event`
 
 **Note**: You can restart your bot in the command line by running `botpress start` and your bot will now answer to "hello world" when you chat with it directly in Messenger.
 
-### 10. Answering to any other message
+### 10. Answer any other user message
 
 From there, your bot now answers to "hello world", but it doesn't answer to anything else. We'll now fix that and add a default answer to other messages. To do it, you only need to `hear` on different conditions.
 
