@@ -162,6 +162,8 @@ const pickCategory = {
 
 module.exports = function(bp) {
 
+  bp.middlewares.load()
+
   bp.hear({
     type: 'postback',
     text: 'GET_STARTED'
