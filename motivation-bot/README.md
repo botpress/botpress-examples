@@ -263,7 +263,7 @@ To access videos from YouTube, you need to create a new file `videos.js` and typ
 
 You also need to import the `axios` and `lodash` packages and create your own `videos` object. The object is a simple map containing multiple links for different categories and implementing the `getYoutubeVideoMetadata` function for grabbing metadata from the YouTube API.
 
-**Important**: You need to obtain your own `<YOUTUBE_API_KEY>` if you want to grab videos from YouTube. To do this, you can follow this detailed [guide](https://developers.google.com/youtube/v3/getting-started).
+**Important**: You need to obtain your own `<YOUTUBE_API_KEY>` if you want to grab videos from YouTube (don't forget to enclose your API key in quotes). To do this, you can follow this detailed [guide](https://developers.google.com/youtube/v3/getting-started).
 
 ```js
 const axios = require('axios')
