@@ -2,7 +2,7 @@
 
 This tutorial will show you how easy it is to build a bot using the Messenger and Wit.ai modules. For this purpose, we will build a bot from scratch and we will end up with a simple weather bot in about 30 minutes. If run into problems, do not hesitate to talk to us on our [Slack Community](https://slack.botpress.io); it will be a pleasure for us to answer your requests.
 
-If you don't want to follow our step-by-step guide, you can clone this repository and just try it by linking it to a Facebook page (Step #6) and your Wit.ai account (Step #7). If you clone this repository, don't forget to run `npm install` in your cloned repository.
+If you don't want to follow our step-by-step guide, you can clone this repository and just try it by linking it to a Facebook page (via the Messenger module, [Step #6](#configure-messenger)) and your Wit.ai account ([Step #7](#configure-wit)). If you clone this repository, don't forget to run `npm install` in your repository.
 
 ## Table of contents
 * [Requirements](#requirements)
@@ -196,7 +196,7 @@ module.exports = function(bp) {
 
 **Note 1**: If you want to run this bot, you will need to register with [OpenWeatherMap](http://api.openweathermap.org/) and get your own `<YOUR_API_KEY>`.
 
-**Note 2**: Make sure the npm module `sync-request` is installed before running the above code.
+**Note 2**: Make sure the node package `sync-request` is installed before running the above code.
 
 ### 13. Chat with your bot<a name="chat-with-bot"></a>
 
